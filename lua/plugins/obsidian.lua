@@ -51,56 +51,57 @@ return {
 
       legacy_commands = false,
       workspaces = {
-        name = "work",
-        path = "~/Sync/vaults/obsidian/work",
-        overrides = {
-          daily_notes = {
-            date_format = "%m-%d-%Y",
-            alias_format = "%B %-d, %Y",
-            default_tags = { "daily-notes" },
-            template = "~/Sync/vaults/obsidian/work/Templates/Daily to-do.md",
+        {
+          name = "work",
+          path = "~/Sync/vaults/obsidian/work",
+          overrides = {
+            daily_notes = {
+              date_format = "%m-%d-%Y",
+              alias_format = "%B %-d, %Y",
+              default_tags = { "daily-notes" },
+              template = "~/Sync/vaults/obsidian/work/Templates/Daily to-do.md",
 
-            folder = (function(date)
-              local d = os.date("*t", date)
-              local month_year = string.format("%02d-%d", d.month, d.year)
-              return "Daily_Notes/" .. month_year
-            end)(),
-            workdays_only = true,
+              folder = (function(date)
+                local d = os.date("*t", date)
+                local month_year = string.format("%02d-%d", d.month, d.year)
+                return "Daily_Notes/" .. month_year
+              end)(),
+              workdays_only = true,
+            },
+            templates = {
+              folder = "~/Sync/vaults/obsidian/work/Templates/",
+              date_format = "%d-%m-%Y",
+              time_format = "%H:%M",
+              -- A map for custom variables, the key should be the variable and the value a function
+              substitutions = {},
+            },
           },
-          templates = {
-            folder = "~/Sync/vaults/obsidian/work/Templates/",
-            date_format = "%d-%m-%Y",
-            time_format = "%H:%M",
-            -- A map for custom variables, the key should be the variable and the value a function
-            substitutions = {},
+        },
+        {
+          name = "personal",
+          path = "~/Sync/vaults/obsidian/personal",
+          overrides = {
+            daily_notes = {
+              date_format = "%m-%d-%Y",
+              alias_format = "%B %-d, %Y",
+              default_tags = { "daily-notes" },
+              template = "~/Sync/vaults/obsidian/personal/Template/Day Notes Template.md",
+              folder = (function(date)
+                local d = os.date("*t", date)
+                local month_year = string.format("%02d-%d", d.month, d.year)
+                return "Journal/" .. month_year
+              end)(),
+            },
+            templates = {
+              folder = "~/Sync/vaults/obsidian/personal/Template/",
+              date_format = "%d-%m-%Y",
+              time_format = "%H:%M",
+              -- A map for custom variables, the key should be the variable and the value a function
+              substitutions = {},
+            },
           },
         },
       },
-      {
-        name = "personal",
-        path = "~/Sync/vaults/obsidian/personal",
-        overrides = {
-          daily_notes = {
-            date_format = "%m-%d-%Y",
-            alias_format = "%B %-d, %Y",
-            default_tags = { "daily-notes" },
-            template = "~/Sync/vaults/obsidian/personal/Template/Day Notes Template.md",
-            folder = (function(date)
-              local d = os.date("*t", date)
-              local month_year = string.format("%02d-%d", d.month, d.year)
-              return "Journal/" .. month_year
-            end)(),
-          },
-          templates = {
-            folder = "~/Sync/vaults/obsidian/personal/Template/",
-            date_format = "%d-%m-%Y",
-            time_format = "%H:%M",
-            -- A map for custom variables, the key should be the variable and the value a function
-            substitutions = {},
-          },
-        },
-      },
-
       log_level = vim.log.levels.INFO,
 
       completion = {
