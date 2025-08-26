@@ -111,10 +111,10 @@ map("n", "<leader>od", "<cmd>Obsidian dailies<CR>", { desc = "open Dailies" })
 map("n", "<leader>cp", "gqap<CR>", { desc = "Format paragraphs" })
 map("n", "gd", vim.lsp.buf.definition, { desc = "G definition" })
 
-local function wrap_selection(before, after)
-  vim.cmd.normal({ args = { "c" .. before .. [[<C-r>"]] .. after }, bang = true })
-end
-
-map("v", "<leader>b", function() wrap_selection("**", "**") end, { desc = "Bold" })
-map("v", "<leader>i", function() wrap_selection("*", "*") end, { desc = "Italic" })
-map("v", "<leader>p", function() wrap_selection("`", "`") end, { desc = "Code" })
+-- local function wrap_selection(wrap)
+--   vim.cmd([[s/\%V.*\%V./**&**/]])
+-- end
+--
+-- map("v", "<leader>b", function() wrap_selection("**") end, { desc = "Bold" })
+-- map("v", "<leader>i", function() wrap_selection("*") end, { desc = "Italic" })
+-- map("v", "<leader>p", function() wrap_selection("`") end, { desc = "Code" })
