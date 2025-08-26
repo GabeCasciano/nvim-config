@@ -9,11 +9,11 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.md",
   callback = function()
-    require("conform").format { async = false, lsp_fallback = true }
+    require("conform").format({ async = false, lsp_fallback = true })
   end,
 })
 
-require("render-markdown").setup {
+require("render-markdown").setup({
   enabled = true,
   latex = { enabled = true },
   pipe_table = { style = "normal", preset = "round" },
@@ -28,7 +28,7 @@ require("render-markdown").setup {
       icon = "",
     },
   },
-}
+})
 
 vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { fg = "#ff8800", bg = "#664014" })
 
@@ -47,40 +47,58 @@ return {
   },
 
   config = function()
-    require("obsidian").setup {
+    require("obsidian").setup({
+
+      legacy_commands = false,
       workspaces = {
-        {
-          name = "work",
-          path = "~/Sync/vaults/obsidian/work",
-          overrides = {
-            templates = {
-              subdir = "Templates",
-            },
+        name = "work",
+        path = "~/Sync/vaults/obsidian/work",
+        overrides = {
+          daily_notes = {
+            date_format = "%m-%d-%Y",
+            alias_format = "%B %-d, %Y",
+            default_tags = { "daily-notes" },
+            template = "~/Sync/vaults/obsidian/work/Templates/Daily to-do.md",
+
+            folder = (function(date)
+              local d = os.date("*t", date)
+              local month_year = string.format("%02d-%d", d.month, d.year)
+              return "Daily_Notes/" .. month_year
+            end)(),
+            workdays_only = true,
           },
-        },
-        {
-          name = "personal",
-          path = "~/Sync/vaults/obsidian/personal",
-          overrides = {
-            templates = {
-              subdir = "Templates",
-            },
+          templates = {
+            folder = "~/Sync/vaults/obsidian/work/Templates/",
+            date_format = "%d-%m-%Y",
+            time_format = "%H:%M",
+            -- A map for custom variables, the key should be the variable and the value a function
+            substitutions = {},
           },
         },
       },
-
-      daily_notes = {
-        date_format = "%m-%d-%Y",
-        alias_format = "%B %-d, %Y",
-        default_tags = { "daily-notes" },
-        template = "Templates/Daily to-do.md",
-        workdays_only = true,
-
-        folder = (function(date)
-          local d = os.date("*t", date)
-          local month_year = string.format("%02d-%d", d.month, d.year)
-          return "Daily_Notes/" .. month_year
-        end)(),
+      {
+        name = "personal",
+        path = "~/Sync/vaults/obsidian/personal",
+        overrides = {
+          daily_notes = {
+            date_format = "%m-%d-%Y",
+            alias_format = "%B %-d, %Y",
+            default_tags = { "daily-notes" },
+            template = "~/Sync/vaults/obsidian/personal/Template/Day Notes Template.md",
+            folder = (function(date)
+              local d = os.date("*t", date)
+              local month_year = string.format("%02d-%d", d.month, d.year)
+              return "Journal/" .. month_year
+            end)(),
+          },
+          templates = {
+            folder = "~/Sync/vaults/obsidian/personal/Template/",
+            date_format = "%d-%m-%Y",
+            time_format = "%H:%M",
+            -- A map for custom variables, the key should be the variable and the value a function
+            substitutions = {},
+          },
+        },
       },
 
       log_level = vim.log.levels.INFO,
@@ -96,7 +114,7 @@ return {
 
       note_path_func = function(spec)
         local path = spec.dir / tostring(spec.id)
-        return path:with_suffix ".md"
+        return path:with_suffix(".md")
       end,
 
       wiki_link_func = function(opts)
@@ -148,11 +166,11 @@ return {
       },
 
       follow_url_func = function(url)
-        vim.fn.jobstart { "xdg-open", url } -- linux
+        vim.fn.jobstart({ "xdg-open", url }) -- linux
       end,
 
       follow_img_func = function(img)
-        vim.fn.jobstart { "xdg-open", url } -- linux
+        vim.fn.jobstart({ "xdg-open", url }) -- linux
       end,
 
       picker = {
@@ -227,6 +245,6 @@ return {
           return string.format("![%s](%s)", path.name, path)
         end,
       },
-    }
+    })
   end,
 }
