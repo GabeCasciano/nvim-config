@@ -47,8 +47,12 @@ return {
   },
 
   config = function()
+<<<<<<< HEAD
     require("obsidian").setup({
 
+=======
+    require("obsidian").setup {
+>>>>>>> 767ae0c (legacy cmds for obsidian)
       legacy_commands = false,
       workspaces = {
         {
