@@ -2,6 +2,12 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 
 cmp.setup({
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "buffer" },
+    { name = "path" },
+    { name = "spell" },
+  }),
   mapping = {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -24,3 +30,14 @@ cmp.setup({
     end, { "i", "s" }),
   },
 })
+
+cmp.setup.filetype({ "markdown", "text" }, {
+  sources = {
+    { name = "spell" },
+    { name = "buffer" },
+    { name = "path" },
+  },
+})
+
+vim.opt.spell = true
+vim.opt.spellling = { "en_us" }
