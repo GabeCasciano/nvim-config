@@ -96,6 +96,7 @@ map("n", "<leader>os", "<cmd>Obsidian search<CR>", { desc = "search the workspac
 map("n", "<leader>od", "<cmd>Obsidian dailies<CR>", { desc = "open Dailies" })
 
 map("n", "<leader>cp", "gqap<CR>", { desc = "Format paragraphs" })
+map("n", "<leader>ce", "z=", { desc = "Get spelling suggestion" })
 map("n", "gd", vim.lsp.buf.definition, { desc = "G definition" })
 
 -- local function wrap_selection(wrap)
