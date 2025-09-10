@@ -17,13 +17,17 @@ DLOGGER="$ROOT/Datalogger"
 if ! tmux has-session -t "$SESSION" 2>/dev/null; then
 	tmux new-session -d -s "$SESSION" -n Obsidian -c "$ROOT"
   tmux send-keys -t "$SESSION":Obsidian 'work' C-m
+  tmux send-keys -t "$SESSION":Obsidian ':Obsidian today' C-m
 
 	tmux new-window -t "$SESSION" -n Prog -c "$CWD"
 	tmux send-keys -t "$SESSION":Prog 'nvim' C-m
-  tmux split-window -v -t "$SESSION":Prog -c "$CWD" -p 25
+  tmux split-window -v -t "$SESSION":Prog -c "$CWD"
+  tmux resize-pane -t "$SESSION":Prog.1 -y 1
+
+  tmux new-window -t "$SESSION" -n Split -c "$CWD"
+  tmux split-window -h -t "$SESSION":Split -c "$CWD"
 fi
 
 tmux select-window -t "$SESSION":Obsidian
 tmux attach -t "$SESSION"
-
 
