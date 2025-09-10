@@ -18,8 +18,8 @@ if ! tmux has-session -t "$SESSION" 2>/dev/null; then
 	tmux new-session -d -s "$SESSION" -n Obsidian -c "$ROOT"
   tmux send-keys -t "$SESSION":Obsidian 'work' C-m
   tmux send-keys -t "$SESSION":Obsidian ':Obsidian today' C-m
-  tmux split-window -v -t "$SESSION":Obsidian
-  tmux split-window -h -t "$SESSION":Obsidian.1 -p 75
+  tmux split-window -h -t "$SESSION":Obsidian
+  tmux split-window -v -t "$SESSION":Obsidian.1 -p 75
 
   tmux send-keys -t "$SESSION":Obsidian.1 'tock -m -s -c' C-m
   tmux send-keys -t "$SESSION":Obsidian.2 'weather' C-m
