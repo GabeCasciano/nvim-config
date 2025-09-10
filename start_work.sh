@@ -22,7 +22,7 @@ if ! tmux has-session -t "$SESSION" 2>/dev/null; then
   tmux split-window -v -t "$SESSION":Obsidian.1 -p 75
   tmux select-pane -t "$SESSION":Obsidian.0
 
-  tmux send-keys -t "$SESSION":Obsidian.1 'tock -m -s -c -f %m-%d-%y ' C-m
+  tmux send-keys -t "$SESSION":Obsidian.1 'tock -m -s -c -f %m-%d-%y -H 2 -W 3' C-m
   tmux send-keys -t "$SESSION":Obsidian.2 'weather' C-m
 
 	tmux new-window -t "$SESSION" -n Prog -c "$CWD"
