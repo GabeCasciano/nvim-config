@@ -1,6 +1,6 @@
 
 #!/bin/bash 
-SESSION="WORK"
+SESSION="WorkDash"
 ROOT="/home/gabe/"
 CWD=$(pwd)
 
@@ -16,23 +16,14 @@ if ! tmux has-session -t "$SESSION" 2>/dev/null; then
   tmux send-keys -t "$SESSION":Obsidian ':Obsidian today' C-m
   tmux split-window -h -t "$SESSION":Obsidian 
   tmux split-window -v -t "$SESSION":Obsidian.1 
+  tmux send-keys -t "$SESSION":Obsidian.2 'tmux resize-pane -t "$SESSION":Obsidian.1 -y 20 && clear && weather' C-m
   tmux send-keys -t "$SESSION":Obsidian.1 'wtfutil' C-m
-  tmux send-keys -t "$SESSION":Obsidian.2 'weather' C-m
-  tmux resize-pane -t "$SESSION":Obsidian.2 -y 25
   tmux select-pane -t "$SESSION":Obsidian.0
-
-  tmux new-window -t "$SESSION" -n Prog -c "$CWD"
-	tmux send-keys -t "$SESSION":Prog 'nvim' C-m
-  tmux split-window -v -t "$SESSION":Prog -c "$CWD"
-  tmux resize-pane -t "$SESSION":Prog.1 -y 1
-  tmux select-pane -t "$SESSION":Prog.0
-
-  tmux new-window -t "$SESSION" -n Split -c "$CWD"
-  tmux split-window -h -t "$SESSION":Split -c "$CWD"
 
   tmux new-window -t "$SESSION" -n Monitor -c "$CMD"
   tmux split-window -h -t "$SESSION":Monitor 
   tmux send-keys -t "$SESSION":Monitor.0 'btop' C-m
+  tmux send-keys -t "$SESSION":Monitor.1 'yazi' C-m
 fi
 
 tmux select-window -t "$SESSION":Obsidian
