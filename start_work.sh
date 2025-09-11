@@ -1,12 +1,8 @@
 
 #!/bin/bash 
-set -euo pipefail 
-
 SESSION="WORK"
 ROOT="/home/gabe/"
 CWD=$(pwd)
-
-DLOGGER="$ROOT/Datalogger"
 
 # Make sure Mqtt is ready 
 
@@ -18,12 +14,14 @@ if ! tmux has-session -t "$SESSION" 2>/dev/null; then
 	tmux new-session -d -s "$SESSION" -n Obsidian -c "$ROOT"
   tmux send-keys -t "$SESSION":Obsidian 'work' C-m
   tmux send-keys -t "$SESSION":Obsidian ':Obsidian today' C-m
-  tmux split-window -h -t "$SESSION":Obsidian
-  tmux split-window -v -t "$SESSION":Obsidian.1 -p 75
-  tmux select-pane -t "$SESSION":Obsidian.0
+  tmux split-window -h -t "$SESSION":Obsidian 
+  tmux split-window -v -t "$SESSION":Obsidian.1 
+  tmux resize-pane -t "$SESSION":Obsidian.2 -y 20
 
   tmux send-keys -t "$SESSION":Obsidian.1 'tock -m -s -c -f %m-%d-%y -H 2 -W 3' C-m
   tmux send-keys -t "$SESSION":Obsidian.2 'weather' C-m
+
+  tmux select-pane -t "$SESSION":Obsidian.0
 
 	tmux new-window -t "$SESSION" -n Prog -c "$CWD"
 	tmux send-keys -t "$SESSION":Prog 'nvim' C-m
