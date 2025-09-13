@@ -23,7 +23,7 @@ if ! tmux has-session -t "$SESSION" 2>/dev/null; then
   tmux new-window -t "$SESSION" -n Monitor -c "$CMD"
   tmux split-window -h -t "$SESSION":Monitor 
   tmux send-keys -t "$SESSION":Monitor.0 'btop' C-m
-  tmux send-keys -t "$SESSION":Monitor.1 'yazi' C-m
+  tmux send-keys -t "$SESSION":Monitor.1 'y' C-m
 fi
 
 tmux select-window -t "$SESSION":Obsidian
