@@ -56,7 +56,7 @@ return {
         },
         {
           name = "personal",
-          path = "~/Sync/vaults/obsidian/personal/",
+          path = "~/Documents/personal",
         }
       },
       log_level = vim.log.levels.INFO,

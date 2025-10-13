@@ -7,6 +7,7 @@ require("conform").setup {
     markdown = { "prettier" },
     cpp = { "clang_format" },
     c = { "clang_format" },
+    rust = { "rustfmt" },
   },
   formatters = {
     prettier = {
