@@ -8,6 +8,7 @@ require("conform").setup {
     cpp = { "clang_format" },
     c = { "clang_format" },
     rust = { "rustfmt" },
+    text = { " latexindent" }
   },
   formatters = {
     prettier = {
