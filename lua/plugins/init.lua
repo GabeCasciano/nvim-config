@@ -2,6 +2,22 @@ return {
 
   -- Lazy.nvim example
   {
+    "nvim-tree/nvim-tree.lua",
+    enabled = false, -- disables nvim-tree
+  },
+
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+  },
+  {
     "iamcco/markdown-preview.nvim",
     build = "cd app && npm install",
     ft = { "markdown" },
@@ -42,7 +58,7 @@ return {
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup {
-        ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "markdown", "markdown_inline", "python", "norg"},
+        ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "markdown", "markdown_inline", "python", "norg" },
         auto_install = false,
         highlight = {
           enable = true,
