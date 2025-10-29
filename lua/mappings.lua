@@ -34,18 +34,6 @@ end, { desc = "general format file" })
 -- global lsp mappings
 map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic loclist" })
 
--- map("n", "<tab>", function()
---   require("nvchad.tabufline").next()
--- end, { desc = "buffer goto next" })
---
--- map("n", "<S-tab>", function()
---   require("nvchad.tabufline").prev()
--- end, { desc = "buffer goto prev" })
---
--- map("n", "<leader>x", function()
---   require("nvchad.tabufline").close_buffer()
--- end, { desc = "buffer close" })
-
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
@@ -95,14 +83,32 @@ map("n", "<leader>on", "<cmd>Obsidian new<CR>", { desc = "create new note" })
 map("n", "<leader>os", "<cmd>Obsidian search<CR>", { desc = "search the workspace" })
 map("n", "<leader>od", "<cmd>Obsidian dailies<CR>", { desc = "open Dailies" })
 
+
+-- Spelling & Formatting
 map("n", "<leader>cp", "gqap<CR>", { desc = "Format paragraphs" })
 map("n", "<leader>ce", "z=", { desc = "Get spelling suggestion" })
 map("n", "gd", vim.lsp.buf.definition, { desc = "G definition" })
 
--- local function wrap_selection(wrap)
---   vim.cmd([[s/\%V.*\%V./**&**/]])
--- end
+-- Oil
+map("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 --
--- map("v", "<leader>b", function() wrap_selection("**") end, { desc = "Bold" })
--- map("v", "<leader>i", function() wrap_selection("*") end, { desc = "Italic" })
--- map("v", "<leader>p", function() wrap_selection("`") end, { desc = "Code" })
+--
+-- OIL keymaps = {
+--     ["g?"] = { "actions.show_help", mode = "n" },
+--     ["<CR>"] = "actions.select",
+--     ["<C-s>"] = { "actions.select", opts = { vertical = true } },
+--     ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+--     ["<C-t>"] = { "actions.select", opts = { tab = true } },
+--     ["<C-p>"] = "actions.preview",
+--     ["<C-c>"] = { "actions.close", mode = "n" },
+--     ["<C-l>"] = "actions.refresh",
+--     ["-"] = { "actions.parent", mode = "n" },
+--     ["_"] = { "actions.open_cwd", mode = "n" },
+--     ["`"] = { "actions.cd", mode = "n" },
+--     ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+--     ["gs"] = { "actions.change_sort", mode = "n" },
+--     ["gx"] = "actions.open_external",
+--     ["g."] = { "actions.toggle_hidden", mode = "n" },
+--     ["g\\"] = { "actions.toggle_trash", mode = "n" },
+--   },
