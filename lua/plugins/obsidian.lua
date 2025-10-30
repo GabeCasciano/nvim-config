@@ -32,6 +32,7 @@ require("render-markdown").setup({
 
 vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { fg = "#ff8800", bg = "#664014" })
 
+
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
@@ -54,10 +55,10 @@ return {
           name = "work",
           path = "~/Sync/vaults/obsidian/work",
         },
-        {
-          name = "personal",
-          path = "~/Documents/personal",
-        }
+        -- {
+        --   name = "personal",
+        --   path = "~/Documents/personal",
+        -- }
       },
       log_level = vim.log.levels.INFO,
 
@@ -115,7 +116,6 @@ return {
 
         return out
       end,
-
 
       daily_notes = {
         date_format = "%m-%d-%Y",

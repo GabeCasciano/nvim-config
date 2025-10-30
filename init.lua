@@ -11,6 +11,10 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+-- Allow project-local configs
+vim.opt.exrc = true   -- look for a local config in the cwd
+vim.opt.secure = true -- disable unsafe commands in local configs
+
 local lazy_config = require "configs.lazy"
 
 -- load plugins
