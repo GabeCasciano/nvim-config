@@ -2,6 +2,15 @@ return {
 
   -- Lazy.nvim example
   {
+    "lervag/vimtex",
+    lazy = false, -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_view_method = "zathura"
+    end
+  },
+  {
     "nvim-tree/nvim-tree.lua",
     enabled = false, -- disables nvim-tree
   },
@@ -49,7 +58,8 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    config = function()
+    event = "BufReadPost",
+    opts = function()
       require "configs.lspconfig"
     end,
   },

@@ -55,10 +55,6 @@ return {
           name = "work",
           path = "~/Sync/vaults/obsidian/work",
         },
-        -- {
-        --   name = "personal",
-        --   path = "~/Documents/personal",
-        -- }
       },
       log_level = vim.log.levels.INFO,
 
@@ -86,36 +82,37 @@ return {
 
       preferred_link_style = "wiki",
 
-      disable_frontmatter = false,
+      frontmatter = {
+        enabled = true,
+        func = function(note)
+          -- Coerce path to string (can be Path-like or nil when creating)
+          local path_str = note.path and tostring(note.path) or ""
 
-      note_frontmatter_func = function(note)
-        -- Coerce path to string (can be Path-like or nil when creating)
-        local path_str = note.path and tostring(note.path) or ""
-
-        -- Compute parent folder name safely
-        local parent_dir = ""
-        if path_str ~= "" then
-          local dir = vim.fs.dirname(path_str)
-          if dir and dir ~= "" then
-            parent_dir = vim.fs.basename(dir) or ""
+          -- Compute parent folder name safely
+          local parent_dir = ""
+          if path_str ~= "" then
+            local dir = vim.fs.dirname(path_str)
+            if dir and dir ~= "" then
+              parent_dir = vim.fs.basename(dir) or ""
+            end
           end
-        end
 
-        if note.title then
-          note:add_alias(note.title)
-          note:add_alias(parent_dir)
-        end
-
-        local out = { id = note.id, aliases = note.aliases, tags = note.tags }
-
-        if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-          for k, v in pairs(note.metadata) do
-            out[k] = v
+          if note.title then
+            note:add_alias(note.title)
+            note:add_alias(parent_dir)
           end
-        end
 
-        return out
-      end,
+          local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+
+          if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+            for k, v in pairs(note.metadata) do
+              out[k] = v
+            end
+          end
+
+          return out
+        end,
+      },
 
       daily_notes = {
         date_format = "%m-%d-%Y",
@@ -157,10 +154,15 @@ return {
         },
       },
 
-      sort_by = "modified",
-      sort_reversed = true,
-
-      search_max_lines = 1000,
+      -- sort_by = "modified",
+      -- sort_reversed = true,
+      --
+      -- search_max_lines = 1000,
+      search = {
+        max_lines = 1000,
+        sort_by = "modified",
+        sort_reversed = true,
+      },
 
       open_notes_in = "current",
 
