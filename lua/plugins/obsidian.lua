@@ -13,6 +13,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+  pattern = { "*.md", "*.markdown" },
+  callback = function()
+    vim.bo.filetype = "markdown"
+  end,
+})
+
 require("render-markdown").setup({
   enabled = true,
   latex = { enabled = true },
