@@ -140,14 +140,14 @@ return {
         date_format = "%d-%m-%Y",
         time_format = "%H:%M",
       },
-
-      follow_url_func = function(url)
-        vim.fn.jobstart({ "xdg-open", url }) -- linux
-      end,
-
-      follow_img_func = function(img)
-        vim.fn.jobstart({ "xdg-open", url }) -- linux
-      end,
+      -- Depricated
+      -- follow_url_func = function(url)
+      --   vim.fn.jobstart({ "xdg-open", url }) -- linux
+      -- end,
+      --
+      -- follow_img_func = function(img)
+      --   vim.fn.jobstart({ "xdg-open", url }) -- linux
+      -- end,
 
       picker = {
         name = "telescope.nvim",
@@ -215,7 +215,7 @@ return {
       },
 
       attachments = {
-        img_folder = "~/Sync/vaults/assets/", -- This is the default
+        folder = "~/Sync/vaults/assets/", -- This is the default
 
         img_name_func = function()
           return string.format("%s-", os.time())
