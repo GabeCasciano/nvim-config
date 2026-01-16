@@ -7,6 +7,17 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end
 })
 
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "tex", "latex", "plaintex" },
+--   callback = function()
+--     vim.lsp.start {
+--       name = "texlab",
+--       cmd = { "texlab" },
+--       root_dir = vim.fn.getcwd(),
+--     }
+--   end,
+-- })
+
 
 
 -- vim.api.nvim_create_autocmd("BufReadPost", {

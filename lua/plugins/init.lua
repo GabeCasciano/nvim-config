@@ -59,8 +59,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = "BufReadPost",
-    opts = function()
-      require "configs.lspconfig"
+    -- opts = function()
+    --   require "configs.lspconfig"
+    -- end,
+    config = function()
+      require("nvchad.configs.lspconfig")
+      require("configs.lspconfig")
     end,
   },
   {
