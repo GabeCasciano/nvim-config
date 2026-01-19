@@ -2,8 +2,15 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 
 cmp.setup({
+
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
+    { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
     { name = "spell" },
@@ -28,6 +35,8 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
   },
 })
 
@@ -40,4 +49,4 @@ cmp.setup.filetype({ "markdown", "text" }, {
 })
 
 vim.opt.spell = true
-vim.opt.spellling = { "en_us" }
+vim.opt.spelllang = { "en_us" }

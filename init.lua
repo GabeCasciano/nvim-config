@@ -20,6 +20,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.g.tex_flavor = "latex"
+vim.opt.clipboard = "unnamedplus"
 
 local lazy_config = require "configs.lazy"
 
