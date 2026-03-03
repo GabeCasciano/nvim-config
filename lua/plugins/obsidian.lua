@@ -59,8 +59,8 @@ return {
       legacy_commands = false,
       workspaces = {
         {
-          name = "work",
-          path = "~/Sync/vaults/obsidian/work",
+          name = "personal",
+          path = "~/Sync/vaults/personal",
         },
       },
       log_level = vim.log.levels.INFO,
