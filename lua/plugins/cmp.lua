@@ -12,6 +12,7 @@ return {
         config = function()
             local cmp = require("cmp")
             local luasnip = require("luasnip")
+            require("luasnip.loaders.from_lua").lazy_load()
 
             cmp.setup({
                 snippet = {
@@ -51,23 +52,24 @@ return {
                     ["<C-Space>"] = cmp.mapping.complete(),
                 },
                 sources = cmp.config.sources({
-                    { name = "nvim_lsp", priority = 1000 },
-                    { name = "luasnip",  priority = 750 },
-                }, {
-                    { name = "buffer", priority = 500 },
-                    { name = "path",   priority = 250 },
+                    { name = "nvim_lsp" },
+                    { name = "buffer" },
+                    { name = "path" },
+                    { name = "spell" }
                 }),
             })
 
-            vim.api.nvim_set_hl(0, "MyCmpNormal", { bg = "#1e222a" })
-            vim.api.nvim_set_hl(0, "MyCmpBorder", { fg = "#56b6c2" })
-            vim.api.nvim_set_hl(0, "MyCmpSel", { bg = "#c678dd", fg = "#ffffff" })
+            vim.api.nvim_set_hl(0, "MyCmpNormal", { bg = "#32422b" })
+            vim.api.nvim_set_hl(0, "MyCmpBorder", { fg = "#4c6642" })
+            vim.api.nvim_set_hl(0, "MyCmpSel", { bg = "#529936", fg = "#ffffff" })
 
             -- Specific logic for prose
             cmp.setup.filetype({ "markdown", "text" }, {
                 sources = cmp.config.sources({
+                    { name = "luasnip" },
                     { name = "spell" },
                     { name = "buffer" },
+                    { name = "path" },
                 })
             })
 
