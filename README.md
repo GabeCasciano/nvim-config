@@ -7,8 +7,9 @@ previously used to.
 My directory is structured as follows:
 
 ```
-.
+~/.config/nvim
 ├── init.lua
+├── lazy-lock.json
 ├── lua
 │   ├── config
 │   │   ├── autocmds.lua
@@ -21,6 +22,7 @@ My directory is structured as follows:
 │       ├── conform.lua
 │       ├── lspconfig.lua
 │       ├── lua-line.lua
+│       ├── LuaSnip.lua
 │       ├── markdown-preview.lua
 │       ├── mason.lua
 │       ├── obsidian.lua
