@@ -1,0 +1,12 @@
+{
+  "clangd_extensions.nvim": { "branch": "main", "commit": "9ac242ec71609eeeb5b5baff6ea6d3a1cb015b64" },
+  "lazy.nvim": { "branch": "main", "commit": "85c7ff3711b730b4030d03144f6db6375044ae82" },
+  "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
+  "mason.nvim": { "branch": "main", "commit": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65" },
+  "mini.icons": { "branch": "main", "commit": "5b9076dae1bfbe47ba4a14bc8b967cde0ab5d77e" },
+  "mini.nvim": { "branch": "main", "commit": "3923662bf3d6ca49a9503f8d7196ea0450983e6a" },
+  "nvim-treesitter": { "branch": "main", "commit": "539abf6da5ee8702e37b82cc953131dadd570da2" },
+  "oil.nvim": { "branch": "master", "commit": "0fcc83805ad11cf714a949c98c605ed717e0b83e" },
+  "render-markdown.nvim": { "branch": "main", "commit": "c7188a8f9d2953696b6303caccbf39c51fa2c1b1" },
+  "vimtex": { "branch": "master", "commit": "9306903316c3ddd250676b7cf97c84a84c9c8f99" }
+}
