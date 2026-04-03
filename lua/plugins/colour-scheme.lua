@@ -7,7 +7,7 @@ return {
             require("nordic").load()
         end,
     },
-
+    --
     -- {
     --     "folke/tokyonight.nvim",
     --     lazy = false,
