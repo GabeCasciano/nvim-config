@@ -1,4 +1,3 @@
-
 vim.g.mapleader = " "
 
 -- Allow project-local configs
