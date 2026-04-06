@@ -15,7 +15,8 @@ return {
                     cpp = { "clang_format" },
                     c = { "clang_format" },
                     rust = { "rustfmt" },
-                    tex = { " latexindent" }
+                    tex = { " latexindent" },
+                    dockerfile = { "hadolint" },
 
                 },
                 formatters = {

@@ -20,6 +20,7 @@ return {
 
     {
         "navarasu/onedark.nvim",
+        lazy = false,
         version = "v0.1.0", -- Pin to legacy version
         priority = 1000,
         config = function()

@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		commit = "5547990",
 		build = ":TSUpdate",
 		config = function()
 			local status, configs = pcall(require, "nvim-treesitter.configs")
@@ -29,6 +30,7 @@ return {
 					"vimdoc",
 					"xml",
 					"yaml",
+					"dockerfile",
 				},
 				highlight = { enable = true },
 				indent = { enable = true },

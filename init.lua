@@ -13,6 +13,8 @@ vim.opt.clipboard = "unnamedplus"
 vim.wo.relativenumber = true
 vim.wo.number = true
 
+vim.opt.rtp:prepend("/home/gabe/.local/share/nvim/site")
+
 local lazy_config = require("config.lazy")
 
 require("config.autocmds")
