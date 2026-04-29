@@ -24,6 +24,7 @@ return {
 			texlab = { cmd = { "texlab" } },
 			docker_language_server = {},
 			docker_compose_language_service = {},
+			arduino_language_server = {},
 		}
 
 		require("mason-lspconfig").setup({

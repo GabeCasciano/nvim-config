@@ -34,6 +34,7 @@ return {
 				render_mode = false,
 				unchecked = { icon = "" },
 			},
+			link = { enabled = true },
 		})
 
 		vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { fg = "#ff8800", bg = "#664014" })
@@ -43,20 +44,37 @@ return {
 
 			workspaces = {
 				{
-					name = "personal",
-					path = "~/Sync/vaults/personal",
+					name = "tensor",
+					path = "~/TensorOne",
 				},
 			},
 
 			log_level = vim.log.levels.INFO,
 
+			new_notes_location = "current_dir",
+
 			completion = {
 				nvim_cmp = true,
 				min_chars = 2,
+				wiki_link_function = "use_alias_only",
+			},
+			link = {
+				style = "markdown",
+				wiki_link_func = function(opts)
+					if opts.label ~= opts.path then
+						return string.format("[[%s|%s]]", opts.path, opts.label)
+					else
+						return string.format("[[%s]]", opts.path)
+					end
+				end,
 			},
 
 			note_id_func = function(title)
-				return title
+				if title ~= nil then
+					return title
+				else
+					return tostring(os.time()) -- fallback to timestamp if no title
+				end
 			end,
 
 			note_path_func = function(spec)
@@ -97,8 +115,8 @@ return {
 				alias_format = "%B %-d, %Y",
 				default_tags = { "daily-notes" },
 				template = "Templates/Daily to-do.md",
-				folder = (function(date)
-					local d = os.date("*t", date)
+				folder = (function()
+					local d = os.date("*t")
 					local month_year = string.format("%02d-%d", d.month, d.year)
 					return "Daily_Notes/" .. month_year
 				end)(),
