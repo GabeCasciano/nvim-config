@@ -28,7 +28,7 @@ map("n", "<leader>cs", "<cmd>set spell<cr>", { desc = "set spell" })
 map("n", "<leader>cn", "<cmd>set nospell<cr>", { desc = "set nospell" })
 
 map({ "n", "x" }, "<leader>cc", function()
-    require("conform").format { lsp_fallback = true }
+	require("conform").format({ lsp_fallback = true })
 end, { desc = "general format file" })
 
 -- global lsp mappings
@@ -37,10 +37,6 @@ map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic locli
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
-
--- nvimtree
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
-map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
 
 -- telescope
 map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
@@ -54,27 +50,15 @@ map("n", "<leader>fs", "<cmd>Telescope git_status<CR>", { desc = "telescope git 
 map("n", "<leader>fp", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
 map(
-    "n",
-    "<leader>fa",
-    "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-    { desc = "telescope find all files" }
+	"n",
+	"<leader>fa",
+	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
+	{ desc = "telescope find all files" }
 )
-
--- terminal
-map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
-
--- new terminals
-map("n", "<leader>h", function()
-    require("nvchad.term").new { pos = "sp" }
-end, { desc = "terminal new horizontal term" })
-
-map("n", "<leader>v", function()
-    require("nvchad.term").new { pos = "vsp" }
-end, { desc = "terminal new vertical term" })
 
 -- Obsidian
 map("n", "<leader><cr>", function()
-    require("obsidian").util.smart_action()
+	require("obsidian").util.smart_action()
 end, { noremap = true, desc = "Obsidian Smart Action" })
 map("n", "<leader>ot", "<cmd>Obsidian today<CR>", { desc = "open today's note" })
 map("n", "<leader>oy", "<cmd>Obsidian yesterday<CR>", { desc = "open yesterday's note" })
@@ -83,14 +67,13 @@ map("n", "<leader>on", "<cmd>Obsidian new<CR>", { desc = "create new note" })
 map("n", "<leader>os", "<cmd>Obsidian search<CR>", { desc = "search the workspace" })
 map("n", "<leader>od", "<cmd>Obsidian dailies<CR>", { desc = "open Dailies" })
 
-
 -- Spelling & Formatting
 map("n", "<leader>cp", "gqap<CR>", { desc = "Format paragraphs" })
 map("n", "<leader>ce", "z=", { desc = "Get spelling suggestion" })
 map("n", "gd", vim.lsp.buf.definition, { desc = "G definition" })
 
 -- Oil
-map("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+map("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open Oil" })
 
 --
 --
