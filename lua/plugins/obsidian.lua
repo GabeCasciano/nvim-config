@@ -44,8 +44,8 @@ return {
 
 			workspaces = {
 				{
-					name = "tensor",
-					path = "~/TensorOne",
+					name = "Mecka",
+					path = "~/Documents/Mecka",
 				},
 			},
 
