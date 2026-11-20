@@ -39,6 +39,13 @@ return {
 
 		vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { fg = "#ff8800", bg = "#664014" })
 
+		-- The Mecka vault only exists on the laptop. Elsewhere (the headless dev
+		-- box) skip obsidian instead of failing at startup with "At least one
+		-- workspace is required".
+		if vim.fn.isdirectory(vim.fn.expand("~/Documents/Mecka")) == 0 then
+			return
+		end
+
 		require("obsidian").setup({
 			legacy_commands = false,
 
